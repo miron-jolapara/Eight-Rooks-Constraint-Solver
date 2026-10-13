@@ -1,0 +1,15 @@
+flowchart TD
+    A([Start]) --> B[Initialize 8 rows as unassigned]
+    B --> C[Select next row]
+    C --> D{All 8 rows assigned?}
+    D -- Yes --> E[Display solution]
+    E --> F([End])
+    D -- No --> G[Try next column]
+    G --> H{Column already used?}
+    H -- Yes --> I[Record and highlight conflict]
+    I --> J{More columns?}
+    J -- Yes --> G
+    J -- No --> K[Backtrack to previous row]
+    K --> C
+    H -- No --> L[Place rook]
+    L --> C
